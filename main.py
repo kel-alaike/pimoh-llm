@@ -1,6 +1,8 @@
 # Import necessary libraries and modules for the chatbot
 import streamlit as st
 import sys
+import os
+from dotenv import load_dotenv
 from langchain.chat_models import ChatOpenAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
@@ -16,8 +18,7 @@ from utils import *
 sys.path.append('.')
 
 # Define API keys for OpenAI and Pinecone
-OPENAI_API_KEY = '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'
-PINECONE_API_KEY = 'e20aa772-b33e-478e-a86d-31e5eb80d9dc'
+load_dotenv()
 
 # Set up a Streamlit header for the application
 st.subheader("Pimoh EatBot 9100 🦩")
@@ -29,7 +30,7 @@ if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
 # Initialize the ChatOpenAI model with GPT-4
-llm = ChatOpenAI(model_name="gpt-4-1106-preview", openai_api_key=OPENAI_API_KEY)
+llm = ChatOpenAI(model_name="gpt-4-1106-preview", openai_api_key=os.environ.get('OPENAI_API_KEY'))
 
 # Set up a conversation buffer memory for storing recent messages
 if 'buffer_memory' not in st.session_state:

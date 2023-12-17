@@ -1,19 +1,20 @@
 # Importing necessary libraries
 from sentence_transformers import SentenceTransformer  # For sentence embeddings
 from openai import OpenAI
+from dotenv import load_dotenv
 import pinecone  # For vector database operations
 import streamlit as st  # For creating web apps
+import os
 
 # Setting the API key for OpenAI
-OPENAI_API_KEY = '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'
-PINECONE_API_KEY = 'e20aa772-b33e-478e-a86d-31e5eb80d9dc'
-client = OpenAI(api_key = OPENAI_API_KEY)
+load_dotenv()
+client = OpenAI(api_key = os.environ.get('OPENAI_API_KEY'))
 
 # Initializing the sentence transformer model for generating embeddings
 model = SentenceTransformer('all-mpnet-base-v2')
 
 # Initializing Pinecone with the API key and setting the environment
-pinecone.init(api_key=PINECONE_API_KEY, environment='gcp-starter')
+pinecone.init(api_key=os.environ.get('PINECONE_API_KEY'), environment='gcp-starter')
 
 # Connecting to an existing Pinecone index
 index = pinecone.Index('tripadvisor-index')
