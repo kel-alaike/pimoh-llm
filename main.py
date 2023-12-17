@@ -21,11 +21,11 @@ sys.path.append('.')
 load_dotenv()
 
 # Set up a Streamlit header for the application
-st.subheader("Pimoh EatBot 9100 🦩")
+st.subheader("Pimoh EatBot 3000 🦩")
 
 # Initialize session states for storing responses and requests
 if 'responses' not in st.session_state:
-    st.session_state['responses'] = ["Hey, where are you thinking of eating?"]
+    st.session_state['responses'] = ["Hey, Pimoh EatBot here. My goal is to help you find a few nice places to eat in London. Are you feeling anything in particular?"]
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
