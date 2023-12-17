@@ -25,7 +25,7 @@ st.subheader("Pimoh EatBot 3000 🦩")
 
 # Initialize session states for storing responses and requests
 if 'responses' not in st.session_state:
-    st.session_state['responses'] = ["Hey, Pimoh EatBot here. My goal is to help you find a few nice places to eat in London. Are you feeling anything in particular?"]
+    st.session_state['responses'] = ["Hey, Pimoh EatBot here. My goal is to help you find a few nice places to eat in London. \nAre you feeling anything in particular?"]
 if 'requests' not in st.session_state:
     st.session_state['requests'] = []
 
